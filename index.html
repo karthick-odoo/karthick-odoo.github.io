@@ -223,13 +223,50 @@ main,.ct,footer{padding-left:84px}
 @media print{.lp,.rail,.dock{display:none!important}main,.ct,footer{margin:0!important;padding-left:0!important}}
 
 
-/* ---- v5: same look, stretch to fill first screen ---- */
+/* ---- v6: first page (hero → contact strip) = exactly one browser window ---- */
 @media (min-width:1101px){
- #home .grid{min-height:calc(100vh - 58px);align-content:stretch;grid-template-rows:auto auto auto auto;padding-bottom:20px}
- #home .grid .t{justify-content:center}
- #home .grid .t.code pre{margin:auto 0}
- #home .grid .t.intro h1{font-size:clamp(1.9rem,3.1vw,3rem)}
- #home .grid .t.sf,#home .grid .t.av{justify-content:center}
+ #home{
+  --hh:59px;
+  font-size:calc(clamp(10px,min(1.78vh,1.05vw),24px)*var(--k,1));
+  height:calc(100vh - var(--hh));height:calc(100dvh - var(--hh));
+  display:flex;flex-direction:column;overflow:hidden
+ }
+ #home.nofit{height:auto;min-height:calc(100vh - var(--hh));overflow:visible}
+ #home .grid{
+  flex:1 1 auto;min-height:0;padding:1em 0;gap:.9em;align-content:stretch;
+  grid-template-rows:minmax(min-content,1.75fr) minmax(min-content,1.55fr) minmax(min-content,1fr) min-content
+ }
+ #home .grid .t{padding:1.1em 1.35em;border-radius:1.5em;justify-content:center;min-height:0}
+ #home .grid .t .lab2{font-size:.85em;margin:0 0 .45em}
+ /* hero */
+ #home .grid .t.intro{padding:1.4em 1.8em}
+ #home .grid .t.intro h1{font-size:3.15em;line-height:1.06}
+ #home .grid .t.intro p{font-size:1.02em;line-height:1.5;margin:.8em 0 .7em;max-width:none}
+ #home .grid .t.intro .qk{font-size:.92em;margin:0 0 1em!important}
+ #home .grid .t.intro .btn{font-size:.92em;padding:.6em 1.25em;margin:0 .55em 0 0}
+ /* code window */
+ #home .grid .t.code{font-size:1em;line-height:1.5}
+ #home .grid .t.code .bar{padding:.75em 1.1em;font-size:.85em}
+ #home .grid .t.code pre{font-size:.92em;line-height:1.6;padding:.6em 1.2em .8em;margin:auto 0}
+ /* cards */
+ #home .grid .t h3{font-size:1.3em}
+ #home .grid .t h3.ht{font-size:1.75em;line-height:1.1}
+ #home .bl{margin:.6em 0 0;padding-left:1.2em}
+ #home .bl li{font-size:.97em;line-height:1.45;margin:.2em 0}
+ #home .apg{gap:.5em}
+ #home .apg div{font-size:.88em;padding:.4em .85em;gap:.45em}
+ #home .apg i{font-size:1em}
+ #home .chips{gap:.5em}
+ #home .chips li{font-size:.9em;padding:.32em .9em}
+ #home .grid .t.sf p{font-size:.95em}
+ #home .grid .t.av p{font-size:.95em}
+ #home .grid .t.av h3{margin:.5em 0 .25em}
+ #home .dot{width:.75em;height:.75em;margin-right:.55em}
+ /* contact strip */
+ #home .grid .t.pink{padding:.8em 1.5em;gap:.6em 1.5em}
+ #home .grid .t.pink h3{font-size:1.75em;flex:1 1 20em}
+ #home .grid .t.pink a{font-size:1.15em!important}
+ #home .grid .t.pink .btn{font-size:.95em;padding:.6em 1.3em}
 }
 </style>
 </head>
@@ -261,11 +298,11 @@ main,.ct,footer{padding-left:84px}
   <span class="v">relocation</span> = <span class="s">"Open to relocate"</span>
   <span class="v">open_to_work</span> = <span class="k">True</span><span class="cursor"></span></pre></section>
 
-<section class="t w2 mint"><p class="lab2">Functional</p><h3 style="font-size:1.5rem">Odoo set up around your process</h3><ul class="bl"><li>Requirement gathering and business process analysis</li><li>Setup of Sales, Purchase, Inventory, Accounting, Manufacturing and HR</li><li>Functional testing, UAT, user guides and training</li></ul></section>
-<section class="t w2 sun"><p class="lab2">Technical</p><h3 style="font-size:1.5rem">Custom features where Odoo stops</h3><ul class="bl"><li>Custom modules in Python and XML</li><li>QWeb PDF and Excel reports, dashboards and wizards</li><li>Scheduled actions, mail templates, security groups and record rules</li></ul></section>
+<section class="t w2 mint"><p class="lab2">Functional</p><h3 class="ht">Odoo set up around your process</h3><ul class="bl"><li>Requirement gathering and business process analysis</li><li>Setup of Sales, Purchase, Inventory, Accounting, Manufacturing and HR</li><li>Functional testing, UAT, user guides and training</li></ul></section>
+<section class="t w2 sun"><p class="lab2">Technical</p><h3 class="ht">Custom features where Odoo stops</h3><ul class="bl"><li>Custom modules in Python and XML</li><li>QWeb PDF and Excel reports, dashboards and wizards</li><li>Scheduled actions, mail templates, security groups and record rules</li></ul></section>
 <section class="t w2 lav"><p class="lab2">Apps I work with</p><div class="apg"><div><i>🛒</i>Sales</div><div><i>🧾</i>Purchase</div><div><i>📦</i>Inventory</div><div><i>💰</i>Accounting</div><div><i>📄</i>Invoicing</div><div><i>📈</i>CRM</div><div><i>🏭</i>Manufacturing</div><div><i>👥</i>HR</div><div><i>🌐</i>Website</div></div></section>
-<section class="t sf"><p class="lab2" style="color:var(--mut)">Latest project</p><h3>Hostel / PG module</h3><p style="color:var(--mut);font-size:.92rem;margin-top:6px">8 custom models and 6 reports</p><a href="#projects" style="margin-top:auto;font-weight:800;color:var(--plum)">Read more →</a></section>
-<section class="t av"><p class="lab2"><span class="dot"></span>Available</p><h3>Open to Odoo roles</h3><p style="opacity:.8;font-size:.92rem">Dubai, UAE · willing to relocate</p></section>
+<section class="t sf"><p class="lab2" style="color:var(--mut)">Latest project</p><h3>Hostel / PG module</h3><p style="color:var(--mut);margin-top:6px">8 custom models and 6 reports</p><a href="#projects" style="margin-top:auto;font-weight:800;color:var(--plum)">Read more →</a></section>
+<section class="t av"><p class="lab2"><span class="dot"></span>Available</p><h3>Open to Odoo roles</h3><p style="opacity:.8">Dubai, UAE · willing to relocate</p></section>
 <section class="t w2 sf"><p class="lab2" style="color:var(--mut)">Core skills</p><ul class="chips"><li>Python</li><li>Odoo ORM</li><li>XML</li><li>QWeb</li><li>SCSS</li><li>PostgreSQL</li><li>Accounting</li><li>Invoicing</li><li>Security rules</li><li>UAT</li></ul></section>
 <section class="t w2 pink"><p class="lab2">Contact</p><h3 style="margin-bottom:10px">Let’s talk about your Odoo project</h3><a href="mailto:karthickakilan@gmail.com" style="font-weight:800;word-break:break-all">karthickakilan@gmail.com</a><a class="btn y" href="Karthick_M_Odoo_Resume.pdf" download>Download resume</a></section>
 </div></div>
@@ -425,6 +462,30 @@ var RESUME_B64="JVBERi0xLjcKJcOkw7zDtsOfCjIgMCBvYmoKPDwvTGVuZ3RoIDMgMCBSL0ZpbHRl
 var url=URL.createObjectURL(new Blob([u],{type:"application/pdf"}));window.RESUME_URL=url;
 document.querySelectorAll('a[href="Karthick_M_Odoo_Resume.pdf"]').forEach(function(a){a.href=url;
 if(a.classList.contains("rb")||a.hasAttribute("data-open")){a.removeAttribute("download");a.target="_blank";a.rel="noopener"}else a.setAttribute("download","Karthick_M_Odoo_Resume.pdf")})}catch(e){}})();
+</script>
+<script>
+/* First page = exactly one window: shrink the first-screen text a touch if a small window can't hold it */
+(function(){
+ try{if("scrollRestoration" in history)history.scrollRestoration="manual"}catch(e){}
+ var home=document.getElementById("home"),grid=home&&home.querySelector(".grid"),hd=document.querySelector(".nb"),mq=matchMedia("(min-width:1101px)"),tm;
+ function over(){
+  var g=grid.getBoundingClientRect(),pb=parseFloat(getComputedStyle(grid).paddingBottom)||0,t=grid.querySelectorAll(".t"),i,r;
+  for(i=0;i<t.length;i++){r=t[i].getBoundingClientRect();if(r.bottom>g.bottom-pb+1||t[i].scrollHeight>t[i].clientHeight+1||t[i].scrollWidth>t[i].clientWidth+1)return true}
+  return false}
+ function fit(){
+  if(!home||!grid)return;
+  home.classList.remove("nofit");home.style.removeProperty("--k");
+  if(!mq.matches)return;
+  home.style.setProperty("--hh",(hd?hd.offsetHeight:59)+"px");
+  var k=1;
+  while(over()&&k>.55){k=Math.round((k-.02)*100)/100;home.style.setProperty("--k",k)}
+  if(over())home.classList.add("nofit")}
+ function later(){clearTimeout(tm);tm=setTimeout(fit,60)}
+ addEventListener("resize",later);addEventListener("load",function(){fit();if(!location.hash)scrollTo(0,0)});
+ if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
+ if(mq.addEventListener)mq.addEventListener("change",fit);
+ fit()
+})();
 </script>
 </body>
 </html>
